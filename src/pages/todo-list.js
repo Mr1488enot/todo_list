@@ -1,5 +1,6 @@
 import Table from 'react-bootstrap/Table';
 
+import TodoListItem from './todo-list-item';
 
 
 
@@ -7,10 +8,17 @@ export default function TodoList () {
     const list = [
         {
             "name": "приготовить ужин",
-            "date": "2 ноября",
+            "date": "07.11.2022.",
             "discriptions": "приготовить пиццу",
             "tags": ["на крайняк заказать"],
             "priority": "тотально важно"
+          },
+          {
+            "name": "покормить кота",
+            "date": "07.11.2022.",
+            "discriptions": "кити кэт",
+            "tags": ["блабла"],
+            "priority": "важно"
           }
     ];
 
@@ -20,6 +28,7 @@ export default function TodoList () {
         <div>
     <Table striped bordered hover size="sm">
       <thead>
+        
         <tr>
           <th>#</th>
           <th>задача</th>
@@ -30,16 +39,10 @@ export default function TodoList () {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td> {list[0].name}</td>
-          <td>{list[0].date}</td>
-          <td>{list[0].discriptions}</td>
-          <td>{list[0].tags}</td>
-          <td>{list[0].priority}</td>
-        </tr>
-        
-          
+       
+      {list.map((item, index) =>(
+        <TodoListItem item={item} index={index+1} key={index}></TodoListItem>
+      ))}
       </tbody>
     </Table>
     </div>
